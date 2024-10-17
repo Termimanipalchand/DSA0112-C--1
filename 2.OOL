@@ -1,0 +1,28 @@
+#include <iostream>
+using namespace std;
+
+class AddNumbers {
+private:
+    int value;
+
+public:
+    AddNumbers(int v = 0) : value(v) {}
+
+    AddNumbers operator+(const AddNumbers& obj) {
+        return AddNumbers(value + obj.value);
+    }
+
+    void display() const {
+        cout << "Value: " << value << endl;
+    }
+};
+
+int main() {
+    AddNumbers num1(10), num2(20);
+
+    AddNumbers result = num1 + num2;
+
+    result.display();
+
+    return 0;
+}
