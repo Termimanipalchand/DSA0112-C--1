@@ -1,0 +1,16 @@
+#include <iostream>
+using namespace std;
+
+class Functor {
+public:
+    void operator()(int a, int b) {
+        cout << "Sum: " << a + b << endl;
+    }
+};
+
+int main() {
+    Functor func;
+    func(5, 10);
+
+    return 0;
+}
