@@ -1,0 +1,15 @@
+#include <iostream>
+#include <cmath> 
+using namespace std;
+int main() {
+    float number;
+    cout << "Enter a floating-point number: ";
+    cin >> number;
+    int floorValue = floor(number);
+    int ceilValue = ceil(number);
+    cout << "Floor value: " << floorValue << endl;
+    cout << "Ceil value: " << ceilValue << endl;
+    int roundedValue = round(number);
+    cout << "Rounded to nearest integer: " << roundedValue << endl;
+    return 0;
+}
