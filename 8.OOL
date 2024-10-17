@@ -1,0 +1,29 @@
+#include <iostream>
+using namespace std;
+
+class SubtractNumbers {
+private:
+    int value;
+
+public:
+    SubtractNumbers(int v = 0) : value(v) {}
+
+    // Overloading the - operator
+    SubtractNumbers operator-(const SubtractNumbers& obj) {
+        return SubtractNumbers(value - obj.value);
+    }
+
+    void display() const {
+        cout << "Value: " << value << endl;
+    }
+};
+
+int main() {
+    SubtractNumbers num1(30), num2(10);
+
+    SubtractNumbers result = num1 - num2;
+
+    result.display();
+
+    return 0;
+}
