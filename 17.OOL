@@ -1,0 +1,24 @@
+
+#include <iostream>
+using namespace std;
+
+// Function to find the absolute value of an integer
+int absolute(int num) {
+    return (num < 0) ? -num : num;
+}
+
+// Function to find the absolute value of a floating-point number
+double absolute(double num) {
+    return (num < 0.0) ? -num : num;
+}
+
+int ma
+in() {
+    int intNum = -10;
+    double floatNum = -15.75;
+
+    cout << "Absolute value of integer " << intNum << " is: " << absolute(intNum) << endl;
+    cout << "Absolute value of floating-point " << floatNum << " is: " << absolute(floatNum) << endl;
+
+    return 0;
+}
