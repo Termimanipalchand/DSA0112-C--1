@@ -1,0 +1,1514 @@
+
+1.
+#include<iostream>
+using namespace std;
+int main(){
+	int n;
+	cout<<"enter ethe number of elements in an array";
+	cin>>n;
+	int arr[n];
+	for(int i=0;i<n;i++){
+		cin>>arr[i];
+	}
+	int max=arr[0];
+	for(int i=1;i<n;i++){
+		if(arr[i]>max)
+		max=arr[i];
+	}
+	cout<<"the max number="<<max;
+}
+
+2.
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    cout << "Enter the number of rows (half of the diamond height): ";
+    cin >> n;
+    for (int i = 1; i <= n; i++) {
+        for (int j = i; j < n; j++) {
+            cout << " ";  
+        }
+        for (int j = 1; j <= (2 * i - 1); j++) {
+            if (j == 1 || j == (2 * i - 1)) {
+                cout << "*";  
+            } else {
+                cout << " ";  
+            }
+        }
+        cout << endl;
+    }
+
+    for (int i = n - 1; i >= 1; i--) {
+        for (int j = n; j > i; j--) {
+            cout << " ";  
+        }
+        for (int j = 1; j <= (2 * i - 1); j++) {
+            if (j == 1 || j == (2 * i - 1)) {
+                cout << "*";  
+            } else {
+                cout << " ";  
+            }
+        }
+        cout << endl;
+    }
+
+    return 0;
+}
+
+3.
+#include<iostream>
+using namespace std;
+int main(){
+	int n;
+	cout<<"Enter the number of rows: ";
+	cin>>n;
+	
+	int i,j;
+	for(i=1;i<=n;i++){
+		for(j=i;j<n;j++){
+			cout<<" ";
+		}
+		for(j=1;j<=(2*i-1);j++){
+			if(j==1||j==(2*i-1)||i==n){
+				cout<<"*";
+			}
+			else{
+				cout<<" ";
+			}
+		}
+		cout<<endl;
+	}
+}
+
+4.
+#include<iostream>
+using namespace std;
+int main(){
+	int n,digit;
+	int freq[10]={0};
+	
+	cout<<"Enter the number: ";
+	cin>>n;
+	
+	while(n>0){
+		digit=n%10;
+		freq[digit]++;
+		n=n/10;
+	}
+	cout<<"frequency of number is\n";
+	for(int i=0;i<10;i++){
+		if(freq[i]>0){
+			cout<<"digit "<<i<<"appears "<<freq[i]<<"times.\n";
+		}
+	}
+	return 0;
+}
+
+5.
+#include<iostream>
+using namespace std;
+int main(){
+	int a[3][3]={{1,2,3},{1,2,3},{1,2,3}};
+	int b[3][3]={{3,2,1},{3,2,1},{3,2,1}};
+	int c[3][3]={0};
+	for(int i=0;i<3;i++){
+		for(int j=0;j<3;j++){
+			c[i][j]=0;
+			for(int k=0;k<3;k++){
+				c[i][j]=a[i][k]+b[k][j];
+			}
+			cout<<c[i][j]<<" ";
+		}
+		cout<<endl;
+	}
+	return 0;
+}
+
+6.
+#include<iostream>
+using namespace std;
+void printspiral(int n){
+	int spiral[n][n];
+	int value=1;
+	int top=0,bottom=n-1,left=0,right=n-1;
+	
+	while(top<=bottom && left<=right){
+		for(int i=left;i<=right;i++){
+			spiral[top][i]=value++;
+		}
+		top++;
+		
+		for(int i=top;i<=bottom;i++){
+			spiral[i][right]=value++;
+		}
+		right--;
+		
+		if (top <= bottom) {
+            for (int i = right; i >= left; i--) {
+                spiral[bottom][i] = value++;
+            }
+            bottom--;
+        }
+		
+		if (left <= right) {
+            for (int i = bottom; i >= top; i--) {
+                spiral[i][left] = value++;
+            }
+            left++;
+        }
+	}
+	
+	for(int i=0;i<n;i++){
+		for(int j=0;j<n;j++){
+			cout<<spiral[i][j]<<"\t";
+		}
+		cout<<endl;
+	}
+}
+int main(){
+	int n;
+	cout<<"Enter the number to the spiral pattern: ";
+	
+	cin>>n;
+	
+	printspiral(n);
+	
+	return 0;
+}
+
+7.
+#include<iostream>
+using namespace std;
+
+bool isPrimeRecursive(int n, int i) {
+    if (i > n / 2)
+        return true;
+        
+    if (n % i == 0)
+        return false;
+
+    return isPrimeRecursive(n, i + 1);
+}
+
+int main() {
+    int n;
+    cout << "Enter a number: ";
+    cin >> n;
+
+    if (n < 2) {
+        cout << "It is not a prime number";
+    } else {
+        if (isPrimeRecursive(n, 2))
+            cout << n << " is a prime number.";
+        else
+            cout << n << " is not a prime number.";
+    }
+
+    return 0;
+}
+
+8.
+#include <iostream>
+using namespace std;
+
+int hexToDec(char hex[]) {
+    int decimal = 0, base = 1;
+    
+    for (int i = strlen(hex) - 1; i >= 0; i--) {
+        if (hex[i] >= '0' && hex[i] <= '9') {
+            decimal += (hex[i] - '0') * base;
+        }
+        else if (hex[i] >= 'A' && hex[i] <= 'F') {
+            decimal += (hex[i] - 'A' + 10) * base;
+        }
+        base *= 16; 
+    }
+    return decimal;
+}
+
+int main() {
+    char hex[10];
+    cout << "Enter a hexadecimal number: ";
+    cin >> hex;
+
+    cout << "Decimal value: " << hexToDec(hex) << endl;
+
+    return 0;
+}
+
+
+9.
+#include<iostream>
+using namespace std;
+
+int power(int base, int exp) {
+    int result = 1;
+    for (int i = 1; i <= exp; i++) {
+        result *= base;  
+    }
+    return result;
+}
+
+int main() {
+    int base, exp;
+    cout << "Enter the base: ";
+    cin >> base;
+    cout << "Enter the exponent: ";
+    cin >> exp;
+
+    cout << base << " raised to the power " << exp << " is: " << power(base, exp) << endl;
+
+    return 0;
+}
+
+10.
+#include<iostream>
+using namespace std;
+
+void printPyramid(int n) {
+    for (int i = 1; i <= n; i++) {
+
+        for (int j = i; j < n; j++) {
+            cout << " ";
+        }
+
+        for (int j = 1; j <= (2 * i - 1); j++) {
+            cout << "*";
+        }
+ 
+        cout << endl;
+    }
+}
+
+int main() {
+    int n;
+    cout << "Enter the number of rows for the pyramid: ";
+    cin >> n;
+
+    printPyramid(n);
+
+    return 0;
+}
+
+11.
+#include <iostream>
+using namespace std;
+
+int isSubset(int arr1[], int size1, int arr2[], int size2) {
+    for (int i = 0; i < size1; i++) {
+        int found = 0;
+        for (int j = 0; j < size2; j++) {
+            if (arr1[i] == arr2[j]) {
+                found = 1;
+                break;
+            }
+        }
+        if (found == 0) 
+		return 0; 
+    }
+    return 1; 
+}
+
+int main() {
+    int arr1[] = {1, 2};
+    int arr2[] = {1, 2, 3};
+
+    if (isSubset(arr1, 2, arr2, 3))
+        cout << "Array 1 is a subset of Array 2\n";
+    else
+        cout << "Not a Subset\n";
+
+    return 0;
+}
+
+
+12.
+#include <iostream>
+using namespace std;
+
+int main() {
+    int number;
+    int count = 0;
+
+    cout << "Enter an integer: ";
+    cin >> number;
+
+    if (number < 0) {
+        number = -number; 
+    }
+
+    while (number > 0) {
+        count++;
+        number /= 10; 
+    }
+
+    cout << "Number of digits: " << count << endl;
+
+    return 0;
+}
+
+13.
+#include <iostream>
+using namespace std;
+
+int main() {
+    string str;
+    cout << "Enter a string: ";
+    getline(cin, str); 
+    
+    cout << "Duplicate characters: ";
+    for (int i = 0; i < str.length(); i++) {
+        for (int j = i + 1; j < str.length(); j++) {
+            if (str[i] == str[j]) {
+                cout << str[i] << " ";
+                break; 
+            }
+        }
+    }
+    cout << endl;
+
+    return 0;
+}
+
+
+14.
+#include <iostream>
+using namespace std;
+
+int main() {
+    int arr[] = {1, 2, 3, 4, 5}; 
+    int size = sizeof(arr) / sizeof(arr[0]);
+    int sorted = 1; 
+
+    for (int i = 1; i < size; i++) {
+        if (arr[i] < arr[i - 1]) {
+            sorted = 0; 
+            break;
+        }
+    }
+
+    if (sorted == 1) {
+        cout << "Array is sorted." << endl;
+    } else {
+        cout << "Array is not sorted." << endl;
+    }
+
+    return 0;
+}
+
+
+15.
+#include <iostream>
+using namespace std;
+
+int factorial(int n) {
+    int fact = 1;
+    for (int i = 1; i <= n; i++) {
+        fact *= i;
+    }
+    return fact;
+}
+
+int main() {
+    int number;
+    cout << "Enter a number: ";
+    cin >> number;
+
+    int sum = 0;
+    int temp = number;
+    
+    while (temp > 0) {
+        int digit = temp % 10; 
+        sum += factorial(digit); 
+        temp /= 10; 
+    }
+
+    if (sum == number) {
+        cout << number << " is a strong number." << endl;
+    } else {
+        cout << number << " is not a strong number." << endl;
+    }
+
+    return 0;
+}
+
+16.
+#include <iostream>
+using namespace std;
+
+int main() {
+    int number;
+    cout << "Enter a number: ";
+    cin >> number;
+
+    int square = number * number; 
+    int temp = number;
+    
+    while (temp > 0) {
+        if (temp % 10 != square % 10) {
+            cout << number << " is not an automorphic number." << endl;
+            return 0;
+        }
+        temp /= 10; 
+        square /= 10; 
+    }
+
+    cout << number << " is an automorphic number." << endl;
+
+    return 0;
+}
+
+17.
+#include <iostream>
+using namespace std;
+
+class Box {
+public:
+    double length;
+    double width;
+    double height;
+
+    Box(double l, double w, double h) : length(l), width(w), height(h) {}
+
+    double volume() {
+        return length * width * height;
+    }
+};
+
+int main() {
+    double length, width, height;
+
+    cout << "Enter length, width, and height of the box: ";
+    cin >> length >> width >> height;
+
+    Box box(length, width, height);
+
+    cout << "Volume of the box: " << box.volume() << endl;
+
+    return 0;
+}
+
+18.
+#include <iostream>
+using namespace std;
+
+void bubbleSort(int arr[], int size) {
+    for (int i = 0; i < size - 1; i++) {
+        for (int j = 0; j < size - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                int temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+}
+
+int main() {
+    int arr[] = {64, 34, 25, 12, 22, 11, 90}; 
+    int size = sizeof(arr) / sizeof(arr[0]);
+
+    bubbleSort(arr, size);
+
+    cout << "Sorted array: ";
+    for (int i = 0; i < size; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+
+    return 0;
+}
+
+19.
+#include <iostream>
+using namespace std;
+
+class Number {
+public:
+    int value;
+
+    Number(int v) : value(v) {}
+
+    Number operator+(const Number& n) {
+        return Number(value + n.value);
+    }
+};
+
+int main() {
+    Number num1(5); 
+    Number num2(10); 
+    Number sum = num1 + num2; 
+
+    cout << "Sum: " << sum.value << endl; 
+
+    return 0;
+}h
+
+20.
+#include <iostream>
+using namespace std;
+
+int main() {
+    int size;
+
+    cout << "Enter the size of the square: ";
+    cin >> size;
+
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
+            cout << "* "; 
+        }
+        cout << endl; 
+    }
+
+    return 0;
+}
+
+21.
+#include<iostream>
+using namespace std;
+int main(){
+	int n;
+	cout<<"Enter the number: ";
+	cin>>n;
+	
+	if(n>0){
+		cout<<"given "<<n<<" is a positive number";
+	}
+	else{
+		cout<<"given "<<n<<" is a negative number";
+	}
+}
+
+22.
+#include <iostream>
+using namespace std;
+
+int sumOfDivisors(int n) {
+    int sum = 0;
+    for (int i = 1; i < n; i++) {
+        if (n % i == 0) {
+            sum += i;
+        }
+    }
+    return sum;
+}
+
+int main() {
+    int a, b;
+    cout << "Enter two numbers: ";
+    cin >> a >> b;
+
+    if (sumOfDivisors(a) == b && sumOfDivisors(b) == a) {
+        cout << a << " and " << b << " are friendly pairs." << endl;
+    } else {
+        cout << a << " and " << b << " are not friendly pairs." << endl;
+    }
+
+    return 0;
+}
+
+
+23.
+#include<iostream>
+using namespace std;
+int main(){
+	int n;
+	cout<<"number of rows: ";
+	cin>>n;
+	
+	for(int i=1;i<=n;i++){
+		for(int j=1;j<=i;j++){
+			cout<<j<<" ";
+		}
+		cout<<endl;
+	}
+}
+
+
+
+24.
+#include<iostream>
+#include<string>
+using namespace std;
+
+int main() {
+    string sentence;
+    int wordCount = 1;
+
+    cout << "Enter a sentence: ";
+    getline(cin, sentence);
+
+    for(int i = 0; i < sentence.length(); i++) {
+        if(sentence[i] == ' ' && sentence[i + 1] != ' ') {
+            wordCount++;
+        }
+    }
+
+    cout << "The number of words in the sentence: " << wordCount << endl;
+
+    return 0;
+}
+
+
+25.
+#include <iostream>
+using namespace std;
+
+void findCommonElements(int arr1[], int size1, int arr2[], int size2) {
+    cout << "Common elements: ";
+    for (int i = 0; i < size1; i++) {
+        for (int j = 0; j < size2; j++) {
+            if (arr1[i] == arr2[j]) {
+                cout << arr1[i] << " ";
+                break; 
+            }
+        }
+    }
+    cout << endl;
+}
+
+int main() {
+    int arr1[] = {1, 3, 4, 5, 7};
+    int arr2[] = {2, 3, 5, 6};
+
+    int size1 = sizeof(arr1) / sizeof(arr1[0]);
+    int size2 = sizeof(arr2) / sizeof(arr2[0]);
+
+    findCommonElements(arr1, size1, arr2, size2);
+
+    return 0;
+}
+
+
+26.
+#include <iostream>
+using namespace std;
+
+int countDivisors(int num) {
+    int count = 0;
+    for (int i = 1; i <= num; i++) {
+        if (num % i == 0) {
+            count++;
+        }
+    }
+    return count;
+}
+
+int main() {
+    int number;
+    cout << "Enter a number: ";
+    cin >> number;
+
+    int result = countDivisors(number);
+    cout << "Number of divisors of " << number << " is: " << result << endl;
+
+    return 0;
+}
+
+27.
+#include<iostream>
+using namespace std;
+
+int main() {
+    long long decimal;
+    cout << "Enter a decimal number: ";
+    cin >> decimal;
+
+    long long octal = 0;
+    int power = 1;
+
+    while (decimal != 0) {
+        int lastDigit = decimal % 8;
+        octal += lastDigit * power;
+        decimal /= 8;
+        power *= 10;
+    }
+
+    cout << "Octal: " << octal << endl;
+    return 0;
+}
+
+28
+#include <iostream>
+using namespace std;
+
+int main() {
+    int num, sum = 0;
+
+    cout << "Enter a number: ";
+    cin >> num;
+
+    while (num > 9) {
+        sum = 0;
+        while (num > 0) {
+            sum += num % 10;
+            num /= 10;
+        }
+        num = sum;
+    }
+
+    if (num == 1) {
+        cout << "It is a magic number." << endl;
+    } else {
+        cout << "It is not a magic number." << endl;
+    }
+
+    return 0;
+}
+
+
+29.
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    double sum = 0.0;
+
+    cout << "Enter the value of n: ";
+    cin >> n;
+
+    for (int i = 1; i <= n; i++) {
+        sum += 1.0 / i;  
+    }
+
+    cout << "Sum of the series: " << sum << endl;
+
+    return 0;
+}
+
+
+30.
+#include<iostream>
+using namespace std;
+int main(){
+	int n;
+	cout<<"number of rows: ";
+	cin>>n;
+	
+	int count=1;
+	for(int i=1;i<=n;i++){
+		for(int j=1;j<=i;j++){
+			cout<<count<<" ";
+			count++;
+		}
+		cout<<endl;
+	}
+}
+
+
+31.
+#include <iostream>
+#include <unordered_map>
+#include <string>
+
+using namespace std;
+
+string longestUniqueSubstring(const string &s) {
+    unordered_map<char, int> charIndex;
+    int start = 0, maxLength = 0;
+    string longestSub = "";
+
+    for (int i = 0; i < s.length(); ++i) {
+        if (charIndex.find(s[i]) != charIndex.end() && charIndex[s[i]] >= start) {
+            start = charIndex[s[i]] + 1;
+        }
+        charIndex[s[i]] = i;
+
+        if (i - start + 1 > maxLength) {
+            maxLength = i - start + 1;
+            longestSub = s.substr(start, maxLength);
+        }
+    }
+    return longestSub;
+}
+
+int main() {
+    string input = "abcabcbb";
+    cout << "Longest substring: " << longestUniqueSubstring(input) << endl;
+    return 0;
+}
+
+
+32.
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n = 5;
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= i; j++) {
+            cout << i;
+        }
+        cout << endl;
+    }
+    return 0;
+}
+
+33.
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n = 4;
+    int matrix[4][4] = { {1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 14, 15, 16} };
+
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j <= i; j++) {
+            cout << matrix[i][j] << " ";
+        }
+        cout << endl;
+    }
+    return 0;
+}
+
+34.
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Employee {
+    string name;
+    int age;
+    double salary;
+
+public:
+    Employee(string n, int a, double s) : name(n), age(a), salary(s) {}
+    
+    int getNameLength() {
+        return name.length();
+    }
+};
+
+int main() {
+    Employee emp("John Doe", 30, 50000);
+    cout << "Employee name length: " << emp.getNameLength() << endl;
+    return 0;
+}
+
+
+35.
+#include <iostream>
+using namespace std;
+
+bool isPrime(int num) {
+    if (num <= 1) return false;
+    for (int i = 2; i * i <= num; i++) {
+        if (num % i == 0) return false;
+    }
+    return true;
+}
+
+int main() {
+    int n, sum = 0;
+    cout << "Enter a number: ";
+    cin >> n;
+
+    for (int i = 2; i <= n; i++) {
+        if (isPrime(i)) {
+            sum += i;
+        }
+    }
+
+    cout << "Sum of primes up to " << n << " is " << sum << endl;
+    return 0;
+}
+
+
+36.
+#include <iostream>
+using namespace std;
+
+int factorial(int n) {
+    if (n == 0 || n == 1) return 1;
+    return n * factorial(n - 1);
+}
+
+int main() {
+    int num;
+    cout << "Enter a number: ";
+    cin >> num;
+
+    cout << "Factorial of " << num << " is " << factorial(num) << endl;
+    return 0;
+}
+
+
+37.
+#include <iostream>
+using namespace std;
+
+class Printer {
+public:
+    virtual void print() {
+        cout << "Printing from Printer" << endl;
+    }
+};
+
+class LaserPrinter : public Printer {
+public:
+    void print() override {
+        cout << "Printing from LaserPrinter" << endl;
+    }
+};
+
+int main() {
+    Printer* printer = new LaserPrinter();
+    printer->print();
+    delete printer;
+    return 0;
+}
+
+
+38.
+#include <iostream>
+using namespace std;
+
+int main() {
+    int a = 5, b = 10;
+    a = a + b;
+    b = a - b;
+    a = a - b;
+
+    cout << "After swapping: a = " << a << ", b = " << b << endl;
+    return 0;
+}
+
+
+39.
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    string s = "Hello World";
+    string reversed = "";
+
+    for (int i = s.length() - 1; i >= 0; i--) {
+        reversed += s[i];
+    }
+
+    cout << "Reversed string: " << reversed << endl;
+    return 0;
+}
+
+
+40.
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n = 3;
+    int matrix[3][3] = { {1, 0, 0}, {0, 1, 0}, {0, 0, 1} };
+    bool isIdentity = true;
+
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            if ((i == j && matrix[i][j] != 1) || (i != j && matrix[i][j] != 0)) {
+                isIdentity = false;
+            }
+        }
+    }
+
+    cout << (isIdentity ? "Identity Matrix" : "Not an Identity Matrix") << endl;
+    return 0;
+}
+
+41.
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main() {
+    int n;
+    cout << "Enter a number: ";
+    cin >> n;
+
+    int root = sqrt(n);
+    if (root * root == n) {
+        cout << n << " is a perfect square." << endl;
+    } else {
+        cout << n << " is not a perfect square." << endl;
+    }
+    return 0;
+}
+
+42.
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    double sum = 0, number;
+
+    cout << "Enter how many numbers: ";
+    cin >> n;
+
+    for (int i = 0; i < n; i++) {
+        cout << "Enter number " << i + 1 << ": ";
+        cin >> number;
+        sum += number;
+    }
+
+    double average = sum / n;
+    cout << "Average: " << average << endl;
+    return 0;
+}
+
+
+43.
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    string str, result;
+    char ch;
+
+    cout << "Enter a string: ";
+    cin >> str;
+    cout << "Enter character to remove: ";
+    cin >> ch;
+
+    for (char c : str) {
+        if (c != ch) {
+            result += c;
+        }
+    }
+
+    cout << "Modified string: " << result << endl;
+    return 0;
+}
+
+
+44.
+#include <iostream>
+using namespace std;
+
+void decimalToBinary(int n) {
+    if (n > 1)
+        decimalToBinary(n / 2);
+
+    cout << n % 2;
+}
+
+int main() {
+    int n;
+    cout << "Enter a decimal number: ";
+    cin >> n;
+
+    cout << "Binary: ";
+    decimalToBinary(n);
+    cout << endl;
+
+    return 0;
+}
+
+
+45.
+#include <iostream>
+using namespace std;
+
+int main() {
+    int year;
+    cout << "Enter a year: ";
+    cin >> year;
+
+    if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) {
+        cout << year << " is a leap year." << endl;
+    } else {
+        cout << year << " is not a leap year." << endl;
+    }
+    return 0;
+}
+
+
+46.
+#include <iostream>
+#include <string>
+using namespace std;
+
+int binaryToDecimal(string binary) {
+    int decimal = 0;
+    int base = 1;
+
+    for (int i = binary.length() - 1; i >= 0; i--) {
+        if (binary[i] == '1') {
+            decimal += base;
+        }
+        base *= 2;
+    }
+    return decimal;
+}
+
+int main() {
+    string binary;
+    cout << "Enter a binary number: ";
+    cin >> binary;
+
+    cout << "Decimal: " << binaryToDecimal(binary) << endl;
+    return 0;
+}
+
+
+47.
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n, sum = 0;
+    cout << "Enter a number: ";
+    cin >> n;
+
+    sum = n * (n + 1) / 2;
+
+    cout << "Sum of first " << n << " natural numbers: " << sum << endl;
+    return 0;
+}
+
+
+48.
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main() {
+    int n, sum = 0, original, digits = 0;
+
+    cout << "Enter a number: ";
+    cin >> n;
+    original = n;
+
+    int temp = n;
+    while (temp != 0) {
+        digits++;
+        temp /= 10;
+    }
+
+    temp = n;
+    while (temp != 0) {
+        sum += pow(temp % 10, digits);
+        temp /= 10;
+    }
+
+    if (sum == original) {
+        cout << original << " is an Armstrong number." << endl;
+    } else {
+        cout << original << " is not an Armstrong number." << endl;
+    }
+
+    return 0;
+}
+
+
+49.
+#include <iostream>
+#include <string>
+using namespace std;
+
+string interleaveStrings(const string &s1, const string &s2) {
+    string result = "";
+    int i = 0, j = 0;
+
+    while (i < s1.length() || j < s2.length()) {
+        if (i < s1.length()) {
+            result += s1[i++];
+        }
+        if (j < s2.length()) {
+            result += s2[j++];
+        }
+    }
+
+    return result;
+}
+
+int main() {
+    string s1, s2;
+    cout << "Enter first string: ";
+    cin >> s1;
+    cout << "Enter second string: ";
+    cin >> s2;
+
+    cout << "Interleaved string: " << interleaveStrings(s1, s2) << endl;
+    return 0;
+}
+
+
+
+50.
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n1, n2;
+    
+    cout << "Enter size of first array: ";
+    cin >> n1;
+    int arr1[n1];
+    cout << "Enter elements of first array: ";
+    for (int i = 0; i < n1; i++) {
+        cin >> arr1[i];
+    }
+
+    cout << "Enter size of second array: ";
+    cin >> n2;
+    int arr2[n2];
+    cout << "Enter elements of second array: ";
+    for (int i = 0; i < n2; i++) {
+        cin >> arr2[i];
+    }
+
+    int merged[n1 + n2];
+    for (int i = 0; i < n1; i++) {
+        merged[i] = arr1[i];
+    }
+    for (int i = 0; i < n2; i++) {
+        merged[n1 + i] = arr2[i];
+    }
+
+    cout << "Merged array: ";
+    for (int i = 0; i < n1 + n2; i++) {
+        cout << merged[i] << " ";
+    }
+    cout << endl;
+
+    return 0;
+}
+
+51.
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n, sum = 0;
+    cout << "Enter a number: ";
+    cin >> n;
+
+    while (n != 0) {
+        sum += n % 10;
+        n /= 10;
+    }
+
+    cout << "Sum of digits: " << sum << endl;
+    return 0;
+}
+
+
+52.
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n, reversed = 0, original;
+    cout << "Enter a number: ";
+    cin >> n;
+
+    original = n;
+
+    while (n != 0) {
+        reversed = reversed * 10 + n % 10;
+        n /= 10;
+    }
+
+    if (original == reversed) {
+        cout << original << " is a palindrome." << endl;
+    } else {
+        cout << original << " is not a palindrome." << endl;
+    }
+
+    return 0;
+}
+
+
+53.
+#include <iostream>
+using namespace std;
+
+int gcd(int a, int b) {
+    while (b != 0) {
+        int temp = b;
+        b = a % b;
+        a = temp;
+    }
+    return a;
+}
+
+int lcm(int a, int b) {
+    return (a * b) / gcd(a, b);
+}
+
+int main() {
+    int a, b;
+    cout << "Enter two numbers: ";
+    cin >> a >> b;
+
+    cout << "HCF: " << gcd(a, b) << endl;
+    cout << "LCM: " << lcm(a, b) << endl;
+    return 0;
+}
+
+
+
+54.
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    cout << "Enter the size of the array: ";
+    cin >> n;
+    int arr[n];
+
+    cout << "Enter array elements: ";
+    for (int i = 0; i < n; i++) {
+        cin >> arr[i];
+    }
+
+    int sum = 0;
+    for (int i = 0; i < n; i++) {
+        sum += arr[i];
+    }
+
+    cout << "Sum of circular array: " << sum << endl;
+    return 0;
+}
+
+
+55.
+#include <iostream>
+using namespace std;
+
+int main() {
+    int a, b;
+    cout << "Enter two numbers: ";
+    cin >> a >> b;
+
+    cout << "Minimum: " << (a < b ? a : b) << endl;
+    return 0;
+}
+
+
+
+56.
+#include <iostream>
+#include <string>
+using namespace std;
+
+class BankAccount {
+    string accountHolder;
+    int accountNumber;
+    double balance;
+
+public:
+    BankAccount(string holder, int number, double bal) {
+        accountHolder = holder;
+        accountNumber = number;
+        balance = bal;
+    }
+
+    void displayDetails() {
+        cout << "Account Holder: " << accountHolder << endl;
+        cout << "Account Number: " << accountNumber << endl;
+        cout << "Balance: " << balance << endl;
+    }
+};
+
+int main() {
+    BankAccount account("John Doe", 12345678, 1500.50);
+    account.displayDetails();
+    return 0;
+}
+
+
+57.
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    cout << "Enter the number of rows: ";
+    cin >> n;
+
+    for (int i = n; i >= 1; i--) {
+        for (int j = 1; j <= i; j++) {
+            cout << "*";
+        }
+        cout << endl;
+    }
+    return 0;
+}
+
+
+58.
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    cout << "Enter a number: ";
+    cin >> n;
+
+    if (n % 2 == 0) {
+        cout << n << " is even." << endl;
+    } else {
+        cout << n << " is odd." << endl;
+    }
+    return 0;
+}
+
+
+
+59.
+#include <iostream>
+#include <climits>
+using namespace std;
+
+int main() {
+    int n, digit, smallest = INT_MAX, largest = INT_MIN;
+    cout << "Enter a number: ";
+    cin >> n;
+
+    while (n != 0) {
+        digit = n % 10;
+        if (digit < smallest) {
+            smallest = digit;
+        }
+        if (digit > largest) {
+            largest = digit;
+        }
+        n /= 10;
+    }
+
+    cout << "Smallest digit: " << smallest << endl;
+    cout << "Largest digit: " << largest << endl;
+    return 0;
+}
+
+
+
+60.
+#include <iostream>
+using namespace std;
+
+int gcd(int a, int b) {
+    while (b != 0) {
+        int temp = b;
+        b = a % b;
+        a = temp;
+    }
+    return a;
+}
+
+int main() {
+    int a, b;
+    cout << "Enter two numbers: ";
+    cin >> a >> b;
+
+    cout << "GCD: " << gcd(a, b) << endl;
+    return 0;
+}
+
+
